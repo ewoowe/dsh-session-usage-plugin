@@ -240,7 +240,7 @@ session-usage-plugin/
   package.json        dsh.bundle + dsh.client declarations, exports map
   cordis.patch.yml    layer patch: one insert, registering the Loader row (no config block)
   build.mjs           build script (tsdown programmatic interface)
-  tsconfig.json       IDE type resolution only, pointing at the checkout source (read-only)
+  tsconfig.json       type resolution for the IDE and npx tsc (noEmit, read-only)
   src/
     index.ts                 Node half: no services, no config, it just lets the Loader row resolve
     client/
@@ -261,6 +261,14 @@ session-usage-plugin/
 ```
 
 ## Install
+
+From npm (the published tarball already carries `lib/`):
+
+```sh
+pnpm dsh plugin --profile web add dsh-session-usage
+```
+
+Or from a checkout — here the build is yours to run, and rerun after any `src` change:
 
 ```sh
 # 1. Build (rerun after any src change) — all from the repository root
@@ -287,8 +295,15 @@ pnpm dsh plugin --profile web remove dsh-session-usage
 
 ```sh
 cd session-usage-plugin
-../node_modules/.bin/tsc -p tsconfig.json    # type check (no output = 0 errors)
+npx tsc -p tsconfig.json                     # type check (no output = 0 errors)
 npm run build                                # writes lib/index.js and lib/client.js
+```
+
+`typescript` is a devDependency, so the type check runs from inside the plugin and needs no
+host checkout. `oxlint` is the host repository's own linter and is not installed here; it is
+available when this plugin sits in a dsh checkout:
+
+```sh
 cd .. && node_modules/.bin/oxlint session-usage-plugin
 ```
 

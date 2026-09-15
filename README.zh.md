@@ -195,7 +195,7 @@ session-usage-plugin/
   package.json        dsh.bundle + dsh.client 声明、exports 映射
   cordis.patch.yml    层补丁：一行 insert，把自己登记为 Loader 条目（无 config 块）
   build.mjs           构建脚本（tsdown 编程接口）
-  tsconfig.json       仅用于 IDE 类型解析，指向 checkout 源码（只读）
+  tsconfig.json       类型解析：给 IDE 与 npx tsc 用（noEmit，只读）
   src/
     index.ts                  Node 半：不提供服务、不提供配置，只让 Loader 行能解析
     client/
@@ -216,6 +216,14 @@ session-usage-plugin/
 ```
 
 ## 安装
+
+从 npm 装（发布的包里已带 `lib/`）：
+
+```sh
+pnpm dsh plugin --profile web add dsh-session-usage
+```
+
+或者从本仓库装——这时构建由你自己跑，且改了 `src` 就要重跑：
 
 ```sh
 # ① 构建（改了 src 就要重跑）—— 全程在仓库根执行
@@ -240,8 +248,14 @@ pnpm dsh plugin --profile web remove dsh-session-usage
 
 ```sh
 cd session-usage-plugin
-../node_modules/.bin/tsc -p tsconfig.json    # 类型检查（无输出 = 0 错误）
+npx tsc -p tsconfig.json                     # 类型检查（无输出 = 0 错误）
 npm run build                                # 产出 lib/index.js 与 lib/client.js
+```
+
+`typescript` 是 devDependency，所以类型检查在插件目录内就能跑，不需要宿主仓库。
+`oxlint` 是宿主仓库自己的 linter，本插件没有装它；把插件放进 dsh 仓库下时才可用：
+
+```sh
 cd .. && node_modules/.bin/oxlint session-usage-plugin
 ```
 

@@ -2,6 +2,27 @@
   "name": "dsh-session-usage",
   "version": "0.1.0",
   "description": "Session usage view: tokens, wall time and cache share per model and per turn, as a conversation view.",
+  "keywords": [
+    "dsh",
+    "deepseek",
+    "deepseek-harness",
+    "cordis",
+    "cordis-plugin",
+    "plugin",
+    "session",
+    "usage",
+    "tokens",
+    "cache-hit",
+    "dashboard"
+  ],
+  "homepage": "https://github.com/ewoowe/dsh-session-usage-plugin#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ewoowe/dsh-session-usage-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ewoowe/dsh-session-usage-plugin/issues"
+  },
   "type": "module",
   "license": "MIT",
   "main": "lib/index.js",
@@ -53,7 +74,15 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsdown": "^0.22.2",
-    "tsx": "^4.22.4"
+    "tsx": "^4.22.4",
+    "typescript": "^7.0.2"
   },
-  "author": "ewoowe <1394166475@qq.com>"
+  "author": "ewoowe <1394166475@qq.com>",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  }
 }
