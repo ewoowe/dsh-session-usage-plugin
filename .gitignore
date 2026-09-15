@@ -6,3 +6,8 @@ node_modules/
 
 # Pack output from `npm pack`.
 *.tgz
+
+# Local npm config — this machine's own registry and auth choices, kept out of
+# the repository on purpose. It is not needed to build or install; a fresh
+# clone reads the machine-wide ~/.npmrc instead.
+.npmrc
