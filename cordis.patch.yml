@@ -1,0 +1,11 @@
+# The session-usage layer: one insert naming this package. `dsh plugin` adds this
+# package to dsh.profile.bundles because it declares dsh.bundle, and the patch
+# below is what makes the row a mounted Loader entry.
+#
+# No `config` block: this plugin has no settings. Its view reads what the client
+# already publishes — projections for the session's totals, the session's own
+# event window for the per-model breakdown — so there is nothing to configure and
+# nothing to hardcode either.
+- insert:
+    - id: session-usage
+      name: 'dsh-session-usage'
