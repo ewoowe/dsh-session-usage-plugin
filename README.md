@@ -12,6 +12,10 @@ This is a **plugin installed into a profile on its own**. It does not modify any
 
 ## The two leaves
 
+![The Usage view with the Model usage leaf selected](doc/usage1-en.png)
+
+![The Usage view with the Message usage leaf selected](doc/usage2-en.png)
+
 | | Model usage | Message usage |
 |---|---|---|
 | One row is | a model | a **turn** (not a message) |
