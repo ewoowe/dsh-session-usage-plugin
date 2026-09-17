@@ -1,6 +1,6 @@
 {
   "name": "dsh-session-usage",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Session usage view: tokens, wall time and cache share per model and per turn, as a conversation view.",
   "keywords": [
     "dsh",
